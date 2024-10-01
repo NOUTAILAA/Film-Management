@@ -63,4 +63,9 @@ public class FilmController {
         filmService.deleteFilm(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/genre/{genreId}")
+    public List<Film> getFilmsByGenre(@PathVariable Long genreId) {
+        return filmService.getFilmsByGenre(genreId);
+    }
+
 }

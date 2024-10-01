@@ -29,4 +29,7 @@ public class FilmService {
     public void deleteFilm(Long id) {
         filmRepository.deleteById(id);
     }
+    public List<Film> getFilmsByGenre(Long genreId) {
+        return filmRepository.findByGenreId(genreId);
+    }
 }
