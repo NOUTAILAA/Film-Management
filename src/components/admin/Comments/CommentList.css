@@ -1,0 +1,49 @@
+/* src/components/CommentList.css */
+.comment-list {
+    margin: 20px;
+  }
+  
+  .comment-list h2 {
+    color: #333;
+  }
+  
+  .comment-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comment-list li {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .comment-list p {
+    margin: 5px 0;
+  }
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    margin: 10px 0;
+    padding: 10px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
