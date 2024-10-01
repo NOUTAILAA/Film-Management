@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
 
 const FilmDetail = () => {
     const { id } = useParams();
@@ -86,6 +87,7 @@ const FilmDetail = () => {
 
     return (
         <div style={styles.container}>
+        <Navbar/>
             <h1>{film.titre}</h1>
             {film.imageData ? (
                 <img

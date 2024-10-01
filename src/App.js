@@ -18,22 +18,9 @@ const App = () => {
     return (
         <Router>
             <div>
-                <h1>Gestion de Films</h1>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Accueil</Link>
-                        </li>
-                        <li>
-                            <Link to="/add-film">Ajouter un Film</Link>
-                        </li>
-                        <li>
-                            <Link to="/add-genre">Ajouter un Genre</Link>
-                        </li>
-                    </ul>
-                </nav>
+               
                 <Routes>
-                <Route path="/" element={<FilmList />} />
+                <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
 
                     <Route path="/films" element={<FilmList />} />

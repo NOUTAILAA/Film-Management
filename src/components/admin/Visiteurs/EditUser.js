@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import './EditUser.css';
+import Navbar from '../Navbar/Navbar';
 
 const EditUser = () => {
     const { userId } = useParams();
@@ -42,6 +43,7 @@ const EditUser = () => {
     };
 
     return (
+        <div> <Navbar/>
         <div className="container">
             <h2>Modifier un Utilisateur</h2>
             {error && <p className="error">{error}</p>}
@@ -72,7 +74,7 @@ const EditUser = () => {
                 </select>
                 <button type="submit">Mettre à jour</button>
             </form>
-        </div>
+        </div></div>
     );
 };
 

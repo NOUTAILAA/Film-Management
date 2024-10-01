@@ -1,6 +1,7 @@
 // src/components/AddFilm.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../Navbar/Navbar';
 
 const AddFilm = () => {
     const [titre, setTitre] = useState('');
@@ -62,7 +63,12 @@ const AddFilm = () => {
     };
 
     return (
+        <div>
+                    <Navbar/>
+
+       
         <div style={styles.container}>
+      
             <h2 style={styles.title}>Ajouter un Film</h2>
             {error && <p style={styles.error}>{error}</p>}
             <form onSubmit={handleSubmit} style={styles.form}>
@@ -113,6 +119,7 @@ const AddFilm = () => {
                 </div>
                 <button type="submit" style={styles.button}>Ajouter Film</button>
             </form>
+        </div>
         </div>
     );
 };

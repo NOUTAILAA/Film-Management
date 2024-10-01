@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AddGenre.css'; // Ensure to create this CSS file
+import Navbar from '../Navbar/Navbar';
 
 const AddGenre = () => {
     const [nom, setNom] = useState('');
@@ -64,6 +65,9 @@ const AddGenre = () => {
     };
 
     return (
+        <div>
+             <Navbar/>
+        
         <div className="container mt-4">
             <h2 className="mb-4 text-center">{editMode ? 'Modifier le Genre' : 'Ajouter un Genre'}</h2>
             {error && <p className="alert alert-danger">{error}</p>}
@@ -105,6 +109,7 @@ const AddGenre = () => {
                     ))}
                 </ul>
             )}
+        </div>
         </div>
     );
 };

@@ -5,6 +5,8 @@ import './ListFilm.css';
 
 const FilmList = () => {
     const [films, setFilms] = useState([]);
+    const [genres, setGenres] = useState([]);
+    const [selectedGenre, setSelectedGenre] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
@@ -19,6 +21,15 @@ const FilmList = () => {
                 setError('Erreur lors du chargement des films');
             } finally {
                 setLoading(false);
+            }
+        };
+
+        const fetchGenres = async () => {
+            try {
+                const response = await axios.get('http://localhost:8035/api/genres');
+                setGenres(response.data);
+            } catch (error) {
+                console.error('Erreur lors du chargement des genres', error);
             }
         };
 
@@ -42,6 +53,7 @@ const FilmList = () => {
         };
 
         fetchFilms();
+        fetchGenres();
         checkUser();
     }, []);
 
@@ -84,11 +96,27 @@ const FilmList = () => {
     if (loading) return <div style={styles.loading}>Chargement des films...</div>;
     if (error) return <div style={styles.error}>{error}</div>;
 
+    const filteredFilms = selectedGenre
+        ? films.filter((film) => film.genre?.id === parseInt(selectedGenre))
+        : films;
+
     return (
         <div style={styles.container}>
             <h1 style={styles.header}>Liste des Films</h1>
+            <select
+                value={selectedGenre}
+                onChange={(e) => setSelectedGenre(e.target.value)}
+                style={styles.select}
+            >
+                <option value="">Tous les genres</option>
+                {genres.map((genre) => (
+                    <option key={genre.id} value={genre.id}>
+                        {genre.nom}
+                    </option>
+                ))}
+            </select>
             <div style={styles.cardContainer}>
-                {films.map(film => (
+                {filteredFilms.map(film => (
                     <div key={film.id} style={styles.card}>
                         <Link to={`/visitfilms/${film.id}`} style={{ textDecoration: 'none', color: '#333' }}>
                             <h3 style={styles.title}>{film.titre}</h3>
@@ -132,7 +160,7 @@ const FilmList = () => {
     );
 };
 
-// Styles for the components
+// Styles pour les composants
 const styles = {
     container: {
         padding: '20px',
@@ -154,6 +182,11 @@ const styles = {
         color: '#333',
         marginBottom: '20px',
     },
+    select: {
+        margin: '20px auto',
+        padding: '10px',
+        fontSize: '1em',
+    },
     cardContainer: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -162,35 +195,26 @@ const styles = {
     },
     card: {
         border: '1px solid #ccc',
-        borderRadius: '10px',
-        padding: '15px',
-        width: '300px',
-        height: '400px',
+        borderRadius: '5px',
+        padding: '10px',
         backgroundColor: '#fff',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        width: '200px',
         textAlign: 'center',
-        textDecoration: 'none',
-        color: '#333',
-        transition: 'transform 0.2s, box-shadow 0.2s',
+        position: 'relative',
     },
     title: {
-        fontSize: '1.3em',
-        margin: '10px 0',
+        fontSize: '1.2em',
+        marginBottom: '10px',
     },
     description: {
         fontSize: '0.9em',
-        margin: '0',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        display: '-webkit-box',
-        WebkitLineClamp: '3',
-        WebkitBoxOrient: 'vertical',
+        color: '#555',
+        marginBottom: '10px',
     },
     image: {
         width: '100%',
         height: 'auto',
         borderRadius: '5px',
-        marginTop: '5px',
     },
 };
 

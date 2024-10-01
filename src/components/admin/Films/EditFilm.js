@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
 
 const EditFilm = () => {
     const { id } = useParams();
@@ -58,6 +59,7 @@ const EditFilm = () => {
 
     return (
         <div style={styles.container}>
+        <Navbar/>
             <h2>Modifier le Film</h2>
             {error && <p style={styles.error}>{error}</p>}
             <form onSubmit={handleSubmit} style={styles.form}>

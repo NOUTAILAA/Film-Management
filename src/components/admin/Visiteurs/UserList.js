@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './UserList.css';
+import Navbar from '../Navbar/Navbar';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -53,6 +54,8 @@ const UserList = () => {
     }
 
     return (
+        <div>
+        <Navbar/>
         <div className="container mt-4">
             <h2>List of Users</h2>
             <button className="btn btn-primary mb-3" onClick={handleAddUser}>
@@ -93,6 +96,7 @@ const UserList = () => {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import Navbar from '../Navbar/Navbar';
 const FilmList = () => {
     const [films, setFilms] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -29,6 +29,7 @@ const FilmList = () => {
 
     return (
         <div>
+        <Navbar/>
             <h1>Liste des Films</h1>
 
             {/* Button to add a new film */}

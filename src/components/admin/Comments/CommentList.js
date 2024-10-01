@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CommentList.css';
+import Navbar from '../Navbar/Navbar';
 
 const CommentList = () => {
   const [comments, setComments] = useState([]);
@@ -57,7 +58,12 @@ const CommentList = () => {
   };
 
   return (
+    <div >
+       <Navbar/>
+    
     <div className="comment-list">
+           
+
       <h2>Liste des Commentaires</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -99,6 +105,7 @@ const CommentList = () => {
           ))}
         </ul>
       )}
+    </div>
     </div>
   );
 };
